@@ -18,7 +18,7 @@ let test = 1;
 test = ++test;
 
 test = test + '1';
-// В переменной test число 21
+// В переменной test строка 21
 console.log(test);
 
 test = --test;
@@ -41,7 +41,7 @@ for(let i = 0; i<=arr.length; i++){
 
 let arr1 = [2, 5, 8, 15, 0, 6, 20, 3]
 for(let i = 0; i<=arr1.length; i++){
-    if(arr1[i]>=5 && arr1[i]<=10)
+    if(arr1[i]>5 && arr1[i]<10)
     console.log(arr1[i]);
 }
 

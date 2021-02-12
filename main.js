@@ -103,11 +103,11 @@ max1(88, 6);
 // Замена элементов массива
 
 function changeZero1() {
-  let arr = [1, 10, 2, 20, 3, 30, 4, 40, 5, 50];
-  for (let i = 0; i < arr.length; i += 1) {
-    if (arr[i] % 10 === 0) {
-      arr = arr.join().replace(/0/g, 'zero');
-      console.log(arr.split(','));
+  let arrA = [1, 10, 2, 20, 3, 30, 4, 40, 5, 50];
+  for (let i = 0; i < arrA.length; i += 1) {
+    if (arrA[i] % 10 === 0) {
+      arrA = arrA.join().replace(/0/g, 'zero');
+      console.log(arrA.split(','));
     }
   }
 }
@@ -119,14 +119,14 @@ const colors1 = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const paragraph1 = document.getElementById('text1');
 let count1 = 0;
 
-function changeColor1(e1) {
-  let currentColor1 = e1.target.style.color;
+function changeColor1(e) {
+  let currentColor1 = e.target.style.color;
   for (let i = 0; i < colors1.length; i += 1) {
     if (count1 === i) {
       currentColor1 = colors1[i];
     }
   }
-  e1.target.style.color = currentColor1;
+  e.target.style.color = currentColor1;
   count1 += 1;
   if (count1 > colors1.length) {
     count1 = 0;
@@ -138,18 +138,18 @@ const colors2 = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const paragraph2 = document.getElementById('text2');
 let count2 = 0;
 
-function changeColor2(e2) {
-  let currentColor2 = e2.target.style.color;
-    for (let i = 0; i < colors2.length; i++) {
-        if (count2 == i) {
-            currentColor2 = colors2[i];
-        }
+function changeColor2(e) {
+  let currentColor2 = e.target.style.color;
+  for (let i = 0; i < colors2.length; i += 1) {
+    if (count2 === i) {
+      currentColor2 = colors2[i];
     }
-    e2.target.style.color = currentColor2;
-    count2++;
-    if (count2 > colors2.length) {
-        count2 = 0;
-    }
+  }
+  e.target.style.color = currentColor2;
+  count2 += 1;
+  if (count2 > colors2.length) {
+    count2 = 0;
+  }
 }
 paragraph2.addEventListener('click', changeColor2);
 
@@ -157,18 +157,17 @@ const colors3 = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const paragraph3 = document.getElementById('text3');
 let count3 = 0;
 
-function changeColor3(e3) {
-
-    let currentColor3 = e3.target.style.color;
-    for (let i = 0; i < colors3.length; i++) {
-        if (count3 == i) {
-            currentColor3 = colors3[i];
-        }
+function changeColor3(e) {
+  let currentColor3 = e.target.style.color;
+  for (let i = 0; i < colors3.length; i += 1) {
+    if (count3 === i) {
+      currentColor3 = colors3[i];
     }
-    e3.target.style.color = currentColor3;
-    count3++;
-    if (count3 > colors3.length) {
-        count3 = 0;
-    }
+  }
+  e.target.style.color = currentColor3;
+  count3 += 1;
+  if (count3 > colors3.length) {
+    count3 = 0;
+  }
 }
 paragraph3.addEventListener('click', changeColor3);

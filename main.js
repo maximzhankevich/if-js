@@ -128,7 +128,7 @@ function changeColor1(e) {
   }
   e.target.style.color = currentColor1;
   count1 += 1;
-  if (count1 > colors1.length) {
+  if (count1 >= colors1.length) {
     count1 = 0;
   }
 }
@@ -147,7 +147,7 @@ function changeColor2(e) {
   }
   e.target.style.color = currentColor2;
   count2 += 1;
-  if (count2 > colors2.length) {
+  if (count2 >= colors2.length) {
     count2 = 0;
   }
 }
@@ -166,7 +166,7 @@ function changeColor3(e) {
   }
   e.target.style.color = currentColor3;
   count3 += 1;
-  if (count3 > colors3.length) {
+  if (count3 >= colors3.length) {
     count3 = 0;
   }
 }

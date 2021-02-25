@@ -240,24 +240,12 @@ search('Germany');
 
 // Array
 
-function palindrome1(str1){
+function palindrome1(str1) {
   return str1 === str1.split('').reverse('').join('') ? 'true' : 'false';
 }
 console.log(palindrome1('шалаш'));
 console.log(palindrome1('Жыве'));
 console.log(palindrome1('Беларусь'));
-
-function seaarchText(text){
-  const searchRes = [];
-  hotels.forEach((current1, i) => {
-    current1 = hotels[i].name + hotels[i].city + hotels[i].country;
-    if (current1.includes(text)) {
-      searchRes.push(hotels[i]);
-    }
-  })
-  return console.log(searchRes);
-}
-seaarchText('USA');
 
 const hotels = [
   {
@@ -417,17 +405,82 @@ const hotels = [
   },
 ];
 
-function countryCity() {
-  return hotels.reduce((result, currentValue) => {
-    const tempValue = currentValue.country;
-    const arr = [];
-    if (!(result[tempValue])) {
-      arr.push(currentValue.city);
-      result[tempValue] = arr;
-    } else if (!(result[tempValue].includes(currentValue.city))) {
-      result[tempValue].push(currentValue.city);
+function seaarchText(text) {
+  const searchRes = [];
+  hotels.forEach((current, i) => {
+    let currentVal = current;
+    currentVal = hotels[i].name + hotels[i].city + hotels[i].country;
+    if (currentVal.includes(text)) {
+      searchRes.push(hotels[i]);
     }
-    return result;
+  }, []);
+  return console.log(searchRes);
+}
+seaarchText('UK');
+
+function countryCity() {
+  return hotels.reduce((res, currentValue) => {
+    const tempValue = currentValue.country;
+    const arr3 = [];
+    if (!(res[tempValue])) {
+      arr3.push(currentValue.city);
+      res[tempValue] = arr3;
+    } else if (!(res[tempValue].includes(currentValue.city))) {
+      res[tempValue].push(currentValue.city);
+    }
+    return res;
   }, {});
 }
 console.log(countryCity());
+
+// Object
+
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
+
+const deepEqual = (objectOne, objectTwo) => {
+  const isParametrsObject = typeof objectOne !== 'object' || typeof objectTwo !== 'object';
+  const isParametrsUndefined = objectOne === undefined || objectTwo === undefined;
+  const isParametrsNull = objectOne === null || objectTwo === null;
+  if (objectOne === objectTwo) return true;
+  if (isParametrsUndefined) return false;
+  if (isParametrsObject) return false;
+  if (isParametrsNull) return false;
+  const objectOneKeys = Object.keys(objectOne);
+  const objectTwoKeys = Object.keys(objectTwo);
+  if (objectOneKeys.length !== objectTwoKeys.length) return false;
+  for (const key of objectOneKeys) {
+    if (!objectTwoKeys.includes(key) || !deepEqual(objectOne[key], objectTwo[key])) return false;
+  }
+  return true;
+};
+console.log(deepEqual(obj1, obj2)); 
+console.log(deepEqual(obj1, obj3));

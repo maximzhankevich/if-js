@@ -482,7 +482,7 @@ const deepEqual = (objectOne, objectTwo) => {
   }
   return true;
 };
-console.log(deepEqual(obj1, obj2)); 
+console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, obj3));
 
 // Classes
@@ -511,13 +511,14 @@ const studentsData = [
     lastName: 'Петров',
     admissionYear: 2019,
     courseName: 'Android',
-  }
+  },
 ];
 class User {
   constructor(param) {
     this.firstName = param.firstName;
     this.lastName = param.lastName;
   }
+
   get fullName() {
     return this.firstName + ' ' + this.lastName;
   }
@@ -528,6 +529,7 @@ class Student extends User {
     this.admissionYear = param.admissionYear;
     this.courseName = param.courseName;
   }
+
   get course() {
     return (new Date()).getFullYear() - this.admissionYear;
   }
@@ -537,6 +539,7 @@ class Students {
   constructor(studentsData) {
     this.studentsData = studentsData;
   }
+
   getInfo() {
     return this.studentsData.sort((oneStud, twoStud) =>
       new Student(oneStud).course - new Student(twoStud).course).map(currentValue =>
@@ -545,3 +548,37 @@ class Students {
 }
 const stud = new Students(studentsData);
 console.log(stud.getInfo());
+
+// DOM
+
+const pOne = document.getElementById('text1');
+const pTwo = document.getElementById('text2');
+const pThree = document.getElementById('text3');
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  [Symbol.iterator]() {
+    return this;
+  },
+  next(currentColor) {
+    let index = this.data.indexOf(currentColor);
+    const arrLength = this.data.length;
+    if (index === -1 || index === arrLength - 1) {
+      index = 0;
+    } else {
+      index += 1;
+    }
+    return {
+      done: false,
+      value: this.data[index += 1],
+    };
+  },
+};
+const changeColor = event => {
+  const elemId = event.target.id;
+  const cColor = document.getElementById(elemId).style.color;
+  event.target.style.color = colors.next(cColor).value;
+};
+
+pOne.addEventListener('click', changeColor);
+pTwo.addEventListener('click', changeColor);
+pThree.addEventListener('click', changeColor);
